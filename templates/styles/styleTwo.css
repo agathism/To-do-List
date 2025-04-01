@@ -5,6 +5,12 @@
   --font-color: #dedede;
   --main-color: #dedede;
   --primary-clr-sub: #16172e;
+  --pending-color: #223149;
+  --pending-task: #131c2a;
+  --progress-color: #5c016a;
+  --progress-task: #390048;
+  --completed-color:  #be185d;
+  --completed-task: #760035;
 }
 
 body {
@@ -12,6 +18,54 @@ body {
   .nav {
     width: 25%;
     background-color: var(--primary-clr);
+    .group {
+      display: flex;
+      line-height: 28px;
+      align-items: center;
+      position: relative;
+      max-width: 190px;
+      .input {
+        font-family: "Montserrat", sans-serif;
+        width: 100%;
+        height: 45px;
+        padding-left: 2.5rem;
+        box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+        border: 0;
+        border-radius: 12px;
+        background-color: #16171d;
+        outline: none;
+        color: #bdbecb;
+        transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+        cursor: text;
+        z-index: 0;
+      }
+
+      .input::placeholder {
+        color: #bdbecb;
+      }
+
+      .input:hover {
+        box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+      }
+
+      .input:active {
+        transform: scale(0.95);
+      }
+
+      .input:focus {
+        box-shadow: 0 0 0 2.5px #2f303d;
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 1rem;
+        fill: #bdbecb;
+        width: 1rem;
+        height: 1rem;
+        pointer-events: none;
+        z-index: 1;
+      }
+    }
   }
   main {
     width: 75%;
@@ -78,10 +132,42 @@ body {
           box-shadow: 0px 0px var(--main-color);
         }
       }
-      .pending, .in_progress, .completed {
+      .pending {
+        background-color: var(--pending-color);
+        .card-desc {
+          background-color: var(--pending-task);
+        }
+        .to-do{
+          background-color: var(--pending-task);
+          border-color: var(--pending-task);
+        }
+      }
+      .in_progress {
+        background-color: var(--progress-color);
+        .card-desc {
+          background-color: var(--progress-task);
+        }
+        .to-do{
+          background-color: var(--progress-task);
+          border-color: var(--progress-task);
+        }
+      }
+      .completed {
+        background-color: var(--completed-color);
+        .card-desc {
+          background-color: var(--completed-task);
+        }
+        .to-do{
+          background-color: var(--completed-task);
+          border-color: var(--completed-task);
+        }
+      }
+
+      .pending,
+      .in_progress,
+      .completed {
         width: 250px;
         border-radius: 30px;
-        background: #161737;
         .card_work {
           width: 200px;
           height: 125px;
@@ -95,16 +181,10 @@ body {
             position: relative;
             top: -10px;
             gap: 10px;
-            background: var(--primary-clr);
             .card-header {
               display: flex;
               align-items: center;
               width: 100%;
-              .card-title {
-                flex: 1;
-                font-size: 0.9em;
-                font-weight: 500;
-              }
               .card-menu {
                 display: flex;
                 gap: 4px;
