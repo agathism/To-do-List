@@ -13,36 +13,32 @@
     require_once("block/header.php");
     ?>
     <main>
-        <div class="login-box">
-            <p>Connectez-Vous!</p>
-            <form>
-                <div class="user-box">
-                    <input type="text" name="username">
-                    <label>Nom d'utilisateur</label>
-                    <?php if (isset($errors["username"])) { ?>
-                        <p class="text-danger">
-                            <?= $errors["username"] ?>
-                        </p>
-                    <?php } ?>
+        <div class="container">
+            <form method="POST" action="index.php?action=login" class="form">
+                <div class="title">Bienvenue,<br><span>connectez-vous pour continuer...</span></div>
+                <input class="input" name="username" placeholder="Nom d'utilisateur" type="text">
+
+                <?php if (isset($errors["username"])) { ?>
+                    <p class="text-danger">
+                        <?= $errors["username"] ?>
+                    </p>
+                <?php } ?>
+                <input class="input" name="password" placeholder="Mot de passe" type="text">
+                <?php if (isset($errors["password"])) { ?>
+                    <p class="text-danger">
+                        <?= $errors["password"] ?>
+                    </p>
+                <?php } ?>
+                <div class="login-with">
                 </div>
-                <div class="user-box">
-                    <input type="text" name="password">
-                    <label>Mot de passe</label>
-                    <?php if (isset($errors["password"])) { ?>
-                        <p class="text-danger">
-                            <?= $errors["password"] ?>
-                        </p>
-                    <?php } ?>
-                </div>
-                <button>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Connexion
-                </button>
+                <button type="submit" class="button-confirm">Connexion→</button>
+                <?php if (isset($errors["login"])) { ?>
+                    <p class="text-danger">
+                        <?= $errors["login"] ?>
+                    </p>
+                <?php } ?>
+                <p>Vous n'avez pas de compte? <a href="register.php" class="a2">S'inscrire!</a></p>
             </form>
-            <p>Vous n'avez pas de compte? <a href="register.php" class="a2">S'inscrire</a></p>
         </div>
     </main>
 </body>

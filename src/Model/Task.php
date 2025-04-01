@@ -6,20 +6,19 @@ namespace App\Model;
  */ 
 class Task
 {
-
     private ?int $id;
     private string $title;
     private string $description;
-    private string $category;
     private string $status;
+    private string $priority;
 
-    public function __construct(int|null $id, string $title, string $description, string $category, string $status)
+    public function __construct(?int $id, string $title, string $description, string $status, string $priority)
     {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
-        $this->category = $category;
         $this->status = $status;
+        $this->priority = $priority;
     }
 
 
@@ -27,7 +26,6 @@ class Task
     {
         return $this->id;
     }
-
 
     public function setId($id)
     {
@@ -54,16 +52,6 @@ class Task
         $this->description = $description;
     }
 
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    public function setCategory($category)
-    {
-        $this->category = $category;
-    }
-
     public function getStatus()
     {
         return $this->status;
@@ -72,5 +60,14 @@ class Task
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
     }
 }

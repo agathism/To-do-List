@@ -25,7 +25,9 @@ class AdminController
     public function dashboardAdmin()
     {
         //Récuperer les tâches
-        $tasks = $this->taskManager->selectAll();
+        $progs = $this->taskManager->getInProgressTasks();
+        $pends = $this->taskManager->getPendingTasks();
+        $comps = $this->taskManager->getCompletedTasks();
         //Afficher les voitures dans la template
         require_once("./templates/index_admin.php");
     }
@@ -42,10 +44,10 @@ class AdminController
 
             if (empty($errors)) {
                 //Instancier une objet task avec le sdonnées du formulaire
-                $task = new Task(null, $_POST["title"], $_POST["description"], $_POST["category"], $_POST["status"], $_POST["created_at"]);
+                $task = new Task(null, $_POST["title"], $_POST["description"], $_POST["category"], $_POST["status"], $_POST["created_at"], $_POST["priority"], $_POST["due_date"]);
                 // Ajouter la voiture en BDD  et rediriger
                 $taskManager = new TaskManager();
-                $taskManager->insertTask($task);
+                $taskManager->insert($task);
                 $this->dashboardAdmin();
                 exit();
             }
@@ -70,17 +72,17 @@ class AdminController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Vérifier les champs du formulaire
-            $errors = $this->validatetaskForm($errors, $_POST);
+            $errors = $this->validateTaskForm($errors, $_POST);
             // Si le formulaire n'a pas renvoyé d'erreurs
             if (empty($errors)) {
 
                 // Mettre à jour la voiture $task et rediriger
                 $task->setTitle($_POST["title"]);
                 $task->setDescription($_POST["description"]);
-                $task->setCategory($_POST["category"]);
                 $task->setStatus($_POST["status"]);
+                $task->setPriority($_POST["priority"]);
 
-                $this->taskManager->updateTask($task);
+                $this->taskManager->update($task);
 
                 header("Location: index.php?action=admin");
                 exit();
@@ -90,7 +92,7 @@ class AdminController
     }
     // Route Delete ( ancien delete.php ) 
     // URL : index.php?action=delete&id=1
-    public function deletetask(int $id)
+    public function deleteTask(int $id)
     {
         $task = $this->taskManager->selectByID($id);
 
@@ -122,14 +124,13 @@ class AdminController
         if (empty($taskForm["description"])) {
             $errors["description"] = "la description de la tâche est manquante";
         }
-        if (empty($taskForm["category"])) {
-            $errors["category"] = "la catégorie de la tâche est manquante";
-        }
         if (empty($taskForm["status"])) {
             $errors["status"] = "le statut de la tâche est manquante";
         }
+        if (empty($taskForm["priority"])) {
+            $errors["category"] = "la priorité de la tâche est manquante";
+        }
         //Démo class taskFormValidator
-
         return $errors;
     }
 }

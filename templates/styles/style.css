@@ -1,185 +1,122 @@
+:root {
+  --input-focus: #f03ea9;
+  --font-color: #fefefe;
+  --font-color-sub: #7e7e7e;
+  --bg-color: #0f172b;
+  --main-color: #fefefe;
+}
+
 body {
-  background-color: rgb(38, 38, 38);
+  background-color: rgb(29, 41, 61);
   main {
-    .login-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 400px;
-      padding: 40px;
-      margin: 20px auto;
-      transform: translate(-50%, -55%);
-      background: rgba(0, 0, 0, 0.9);
-      box-sizing: border-box;
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
-    }
-
-    .login-box p:first-child {
-      margin: 0 0 30px;
-      padding: 0;
-      color: #fff;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .login-box .user-box {
-      position: relative;
-    }
-
-    .login-box .user-box input {
-      width: 100%;
-      padding: 10px 0;
-      font-size: 16px;
-      color: #fff;
-      margin-bottom: 30px;
-      border: none;
-      border-bottom: 1px solid #fff;
-      outline: none;
-      background: transparent;
-    }
-
-    .login-box .user-box label {
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding: 10px 0;
-      font-size: 16px;
-      color: #fff;
-      pointer-events: none;
-      transition: 0.5s;
-    }
-
-    .login-box .user-box input:focus ~ label,
-    .login-box .user-box input:valid ~ label {
-      top: -20px;
-      left: 0;
-      color: #fff;
-      font-size: 12px;
-    }
-
-    .login-box form button {
-      position: relative;
-      display: inline-block;
-      padding: 10px 20px;
-      font-weight: bold;
-      color: #fff;
-      font-size: 16px;
-      text-decoration: none;
-      text-transform: uppercase;
-      overflow: hidden;
-      transition: 0.5s;
-      margin-top: 40px;
-      letter-spacing: 3px;
-      cursor: pointer;
-    }
-
-    .login-box button:hover {
-      background: #fff;
-      color: #272727;
-      border-radius: 5px;
-    }
-    .login-box button span {
-      position: absolute;
-      display: block;
-    }
-
-    .login-box button span:nth-child(1) {
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #fff);
-      animation: btn-anim1 1.5s linear infinite;
-    }
-
-    @keyframes btn-anim1 {
-      0% {
-        left: -100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    .container {
+      width: 300px;
+      .form {
+        margin-top: 100px;
+        padding: 20px;
+        background: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 20px;
+        border-radius: 5px;
+        border: 2px solid var(--main-color);
+        box-shadow: 4px 4px var(--main-color);
       }
 
-      50%,
-      100% {
-        left: 100%;
+      .title {
+        color: var(--font-color);
+        font-weight: 900;
+        font-size: 20px;
+        margin-bottom: 25px;
       }
-    }
 
-    .login-box button span:nth-child(2) {
-      top: -100%;
-      right: 0;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(180deg, transparent, #fff);
-      animation: btn-anim2 1.5s linear infinite;
-      animation-delay: .375s
-    }
-
-    @keyframes btn-anim2 {
-      0% {
-        top: -100%;
+      .title span {
+        color: var(--font-color-sub);
+        font-weight: 600;
+        font-size: 17px;
       }
-    
-      50%,100% {
-        top: 100%;
+
+      .input {
+        width: 250px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid var(--main-color);
+        background-color: var(--bg-color);
+        box-shadow: 4px 4px var(--main-color);
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--font-color);
+        padding: 5px 10px;
+        outline: none;
       }
-    }
 
-    .login-box button span:nth-child(3) {
-      bottom: 0;
-      right: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(270deg, transparent, #fff);
-      animation: btn-anim3 1.5s linear infinite;
-      animation-delay: .75s
-    }
-
-    @keyframes btn-anim3 {
-      0% {
-        right: -100%;
+      .input::placeholder {
+        color: var(--font-color-sub);
+        opacity: 0.8;
       }
-    
-      50%,100% {
-        right: 100%;
+
+      .input:focus {
+        border: 2px solid var(--input-focus);
       }
-    }
 
-    .login-box button span:nth-child(4) {
-      bottom: -100%;
-      left: 0;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(360deg, transparent, #fff);
-      animation: btn-anim4 1.5s linear infinite;
-      animation-delay: 1.125s
-    }
-
-    @keyframes btn-anim4 {
-      0% {
-        bottom: -100%;
+      .login-with {
+        display: flex;
+        gap: 20px;
       }
-    
-      50%,100% {
-        bottom: 100%;
+
+      .button-log {
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        border: 2px solid var(--main-color);
+        background-color: var(--bg-color);
+        box-shadow: 4px 4px var(--main-color);
+        color: var(--font-color);
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-    }
 
-    .login-box p:last-child {
-      color: #aaa;
-      font-size: 14px;
-    }
+      .button-log:active,
+      .button-confirm:active {
+        box-shadow: 0px 0px var(--main-color);
+        transform: translate(3px, 3px);
+      }
 
-    .login-box a.a2 {
-      color: #fff;
-      text-decoration: none;
-    }
+      .button-confirm {
+        margin: 5px auto 0 auto;
+        width: 120px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid var(--main-color);
+        background-color: var(--bg-color);
+        box-shadow: 4px 4px var(--main-color);
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--font-color);
+        cursor: pointer;
+      }
 
-    .login-box a.a2:hover {
-      background: transparent;
-      color: #aaa;
-      border-radius: 5px;
+      p, a.a2 {
+        color: white;
+      }
+
+      a.a2:hover{
+        text-decoration: underline;
+      }
+
+      a.a2:hover {
+        background: transparent;
+        color: #f03ea9;
+        border-radius: 5px;
+      }
     }
   }
 }

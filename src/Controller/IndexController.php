@@ -24,22 +24,24 @@ class IndexController
     // Route HomePage -> URL : index.php
     public function homePage()
     {
-        //Récupérer les animaux
-        $animals = $this->taskManager->selectAll();
-        //Afficher les animaux dans le template
-        require_once("./templates/index_task.php");
+        //Récupérer les tache
+        $progs = $this->taskManager->getInProgressTasks();
+        $pends = $this->taskManager->getPendingTasks();
+        $comps = $this->taskManager->getCompletedTasks();
+        //Afficher les tâches dans le template
+        require_once("./templates/index_admin.php");
     }
 
     // Route DetailAnimal -> URL: index.php?action=detail&id=10 
     public function detailTask(int $id)
     {
-        //Récupérer l'animal
-        $animal = $this->taskManager->selectByID($id);
-        if ($animal != false) {
-            //Afficher l'animal dans le template
+        //Récupérer la tâche
+        $task = $this->taskManager->selectByID($id);
+        if ($task != false) {
+            //Afficher la tâche dans le template
             require_once("./templates/task_detail.php");
         } else {
-            header("Location: index.php");
+            header("Location: index_admin.php");
             exit();
         }
     }

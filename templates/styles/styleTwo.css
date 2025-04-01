@@ -1,0 +1,133 @@
+:root {
+  --primary-clr: #0f1023;
+  --dot-clr: #f03ea9;
+  --play: #ffc3e7;
+  --font-color: #dedede;
+  --main-color: #dedede;
+  --primary-clr-sub: #16172e;
+}
+
+body {
+  color: white;
+  .nav {
+    width: 25%;
+    background-color: var(--primary-clr);
+  }
+  main {
+    width: 75%;
+    .tasks {
+      width: 100%;
+      hgroup {
+        .button {
+          position: relative;
+          width: 215px;
+          height: 40px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          border: 2px solid var(--main-color);
+          box-shadow: 4px 4px var(--main-color);
+          background-color: var(--primary-clr-sub);
+          border-radius: 10px;
+          overflow: hidden;
+        }
+
+        .button,
+        .button__icon,
+        .button__text {
+          transition: all 0.3s;
+        }
+
+        .button .button__text {
+          transform: translateX(25px);
+          color: var(--font-color);
+          font-weight: 600;
+        }
+
+        .button .button__icon {
+          position: absolute;
+          transform: translateX(163px);
+          height: 100%;
+          width: 39px;
+          background-color: var(primary-clr-sub);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .button .svg {
+          width: 20px;
+          stroke: var(--main-color);
+        }
+
+        .button:hover {
+          background: var(primary-clr);
+        }
+
+        .button:hover .button__text {
+          color: transparent;
+        }
+
+        .button:hover .button__icon {
+          width: 220px;
+          transform: translateX(0);
+        }
+
+        .button:active {
+          transform: translate(3px, 3px);
+          box-shadow: 0px 0px var(--main-color);
+        }
+      }
+      .pending, .in_progress, .completed {
+        width: 250px;
+        border-radius: 30px;
+        background: #161737;
+        .card_work {
+          width: 200px;
+          height: 125px;
+          border-radius: 10px;
+          font-family: "Arial";
+          color: #fff;
+          cursor: pointer;
+          .card-desc {
+            border-radius: 10px;
+            padding: 15px;
+            position: relative;
+            top: -10px;
+            gap: 10px;
+            background: var(--primary-clr);
+            .card-header {
+              display: flex;
+              align-items: center;
+              width: 100%;
+              .card-title {
+                flex: 1;
+                font-size: 0.9em;
+                font-weight: 500;
+              }
+              .card-menu {
+                display: flex;
+                gap: 4px;
+                margin-inline: auto;
+                .card .dot {
+                  width: 5px;
+                  height: 5px;
+                  border-radius: 50%;
+                  background: var(--dot-clr);
+                }
+              }
+            }
+          }
+          .card-time {
+            font-size: 1.7em;
+            font-weight: 500;
+          }
+          .card .recent {
+            line-height: 0;
+            font-size: 0.8em;
+          }
+        }
+      }
+    }
+  }
+}

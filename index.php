@@ -86,6 +86,6 @@ if ($action === 'homePage') {
 //Sinon aucune route correspond -> page d'accueil par défaut + Clean url
 } else {
 
-    header("Location: index.php");
+    header("Location: login.php");
 
 }
